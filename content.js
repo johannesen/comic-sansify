@@ -62,7 +62,7 @@
       100% { filter: hue-rotate(360deg); }
     }
 
-    h1, h2, h3, h4, h5, h6, strong, b, a {
+    h1, h2, h3, h4, h5, h6 {
       background: linear-gradient(135deg, #ff007f, #ff7f00, #ffff00, #00ff00, #00ffff, #0000ff, #8b00ff) !important;
       -webkit-background-clip: text !important;
       -webkit-text-fill-color: transparent !important;

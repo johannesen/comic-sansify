@@ -40,7 +40,7 @@ Peer-reviewed studies by scientists who we just made up prove that:
 - 🛡️ **Icon & Code Armor**: Preserves font icons (FontAwesome, Material Icons, Feather, Tabler, etc.) and code blocks (`<pre>`, `<code>`, `<kbd>`, math), so websites and developer tools don't break into blank boxes.
 - 🌐 **Per-Site Domain Controls**: Enable or disable Comic Sans per domain directly from the popup (whitelist/blacklist).
 - 🎨 **Visual Toolbar Feedback**: The toolbar icon dynamically adapts in real time—vibrant pink when active, clean grayscale when disabled on that tab.
-- 🌈 **Rainbow Mode (Easter Egg)**: Flip the switch in the popup for animated gradient rainbow headings, links, and bold text.
+- 🌈 **Rainbow Mode (Easter Egg)**: Flip the switch in the popup for animated gradient rainbow headings (`<h1>`–`<h6>`).
 - 🪶 **Zero Tracking / Zero Bloat**: 100% client-side, offline-ready, no telemetry, no tracking.
 
 ---
