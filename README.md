@@ -34,12 +34,14 @@ Peer-reviewed studies by scientists who we just made up prove that:
 
 ---
 
-## ✨ Features
+## ✨ Features (v2.0 - The Ultimate Edition)
 
-- ⚡ **Zero-Latency Injustice**: Instantly overwrites every pretentious web designer's bespoke `$50,000` brand typography with unadulterated Comic Sans.
-- 🎛️ **The Panic Switch**: A handy popup toggle to turn it off when your boss walks behind your desk.
-- 💾 **Persistent Regret**: Remembers your preference across browsing sessions so you never accidentally experience good design again.
-- 🪶 **Featherweight**: Pure vanilla CSS & JS. No bloated frameworks, no analytics, no tracking—just pure typographic anarchy.
+- ⚡ **Smart Typography Replacement**: Overwrites pretentious fonts with `"Comic Sans MS"` (with bundled offline **Comic Neue** fallback for Linux/ChromeOS users).
+- 🛡️ **Icon & Code Armor**: Preserves font icons (FontAwesome, Material Icons, Feather, Tabler, etc.) and code blocks (`<pre>`, `<code>`, `<kbd>`, math), so websites and developer tools don't break into blank boxes.
+- 🌐 **Per-Site Domain Controls**: Enable or disable Comic Sans per domain directly from the popup (whitelist/blacklist).
+- 🎨 **Visual Toolbar Feedback**: The toolbar icon dynamically adapts in real time—vibrant pink when active, clean grayscale when disabled on that tab.
+- 🌈 **Rainbow Mode (Easter Egg)**: Flip the switch in the popup for animated gradient rainbow headings, links, and bold text.
+- 🪶 **Zero Tracking / Zero Bloat**: 100% client-side, offline-ready, no telemetry, no tracking.
 
 ---
 
@@ -72,4 +74,4 @@ Because Google won't let us submit this to the Chrome Web Store without a 4-week
 
 ## 📜 License
 
-MIT License. Do whatever you want with it—just make sure someone rolls their eyes in the process.
+MIT License. Bundles [Comic Neue](http://comicneue.com/) under the SIL Open Font License (OFL).
