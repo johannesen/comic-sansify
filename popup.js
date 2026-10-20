@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const globalToggle = document.getElementById('global-toggle');
   const siteToggle = document.getElementById('site-toggle');
   const rainbowToggle = document.getElementById('rainbow-toggle');
+  const rainbowImagesToggle = document.getElementById('rainbow-images-toggle');
   const domainLabel = document.getElementById('domain-name');
   const statusBanner = document.getElementById('status-banner');
   const siteSection = document.getElementById('site-section');
@@ -20,9 +21,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  function updateUI(globalEnabled, excludedDomains, rainbow) {
+  function updateUI(globalEnabled, excludedDomains, rainbowHeadings, rainbowImages) {
     globalToggle.checked = globalEnabled;
-    rainbowToggle.checked = rainbow;
+    rainbowToggle.checked = rainbowHeadings;
+    rainbowImagesToggle.checked = rainbowImages;
 
     if (!currentHostname) {
       siteSection.style.opacity = '0.5';
@@ -45,9 +47,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const isActiveHere = globalEnabled && !isExcluded;
 
     if (isActiveHere) {
-      statusBanner.textContent = rainbow
-        ? '🌈 Sparkling Comic Sans Active!'
-        : '✨ Comic Sans Active on this site!';
+      const modes = [];
+      if (rainbowHeadings) modes.push('🌈 Headings');
+      if (rainbowImages) modes.push('🎨 Images');
+      const extra = modes.length > 0 ? ` (${modes.join(' + ')})` : '';
+      statusBanner.textContent = `✨ Comic Sans Active${extra}!`;
       statusBanner.className = 'status-banner';
     } else {
       statusBanner.textContent = !globalEnabled
@@ -69,10 +73,11 @@ document.addEventListener('DOMContentLoaded', () => {
       {
         enabled: true,
         excludedDomains: [],
-        rainbowMode: false
+        rainbowMode: false,
+        rainbowImages: false
       },
       (data) => {
-        updateUI(data.enabled, data.excludedDomains, data.rainbowMode);
+        updateUI(data.enabled, data.excludedDomains, data.rainbowMode, data.rainbowImages);
       }
     );
   });
@@ -82,9 +87,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const enabled = globalToggle.checked;
     chrome.storage.sync.set({ enabled }, () => {
       chrome.storage.sync.get(
-        { excludedDomains: [], rainbowMode: false },
+        { excludedDomains: [], rainbowMode: false, rainbowImages: false },
         (data) => {
-          updateUI(enabled, data.excludedDomains, data.rainbowMode);
+          updateUI(enabled, data.excludedDomains, data.rainbowMode, data.rainbowImages);
         }
       );
     });
@@ -95,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!currentHostname) return;
 
     chrome.storage.sync.get(
-      { enabled: true, excludedDomains: [], rainbowMode: false },
+      { enabled: true, excludedDomains: [], rainbowMode: false, rainbowImages: false },
       (data) => {
         let excluded = [...data.excludedDomains];
         if (siteToggle.checked) {
@@ -111,20 +116,33 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         chrome.storage.sync.set({ excludedDomains: excluded }, () => {
-          updateUI(data.enabled, excluded, data.rainbowMode);
+          updateUI(data.enabled, excluded, data.rainbowMode, data.rainbowImages);
         });
       }
     );
   });
 
-  // Handle rainbow toggle
+  // Handle rainbow headings toggle
   rainbowToggle.addEventListener('change', () => {
     const rainbowMode = rainbowToggle.checked;
     chrome.storage.sync.set({ rainbowMode }, () => {
       chrome.storage.sync.get(
-        { enabled: true, excludedDomains: [] },
+        { enabled: true, excludedDomains: [], rainbowImages: false },
         (data) => {
-          updateUI(data.enabled, data.excludedDomains, rainbowMode);
+          updateUI(data.enabled, data.excludedDomains, rainbowMode, data.rainbowImages);
+        }
+      );
+    });
+  });
+
+  // Handle rainbow images toggle
+  rainbowImagesToggle.addEventListener('change', () => {
+    const rainbowImages = rainbowImagesToggle.checked;
+    chrome.storage.sync.set({ rainbowImages }, () => {
+      chrome.storage.sync.get(
+        { enabled: true, excludedDomains: [], rainbowMode: false },
+        (data) => {
+          updateUI(data.enabled, data.excludedDomains, data.rainbowMode, rainbowImages);
         }
       );
     });

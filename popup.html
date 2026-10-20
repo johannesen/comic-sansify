@@ -10,7 +10,7 @@
 
     body {
       font-family: "Comic Sans MS", "Comic Sans", "Comic Neue", cursive, sans-serif;
-      width: 280px;
+      width: 290px;
       padding: 16px;
       margin: 0;
       background: #fdfdfd;
@@ -53,6 +53,7 @@
     .label-group {
       display: flex;
       flex-direction: column;
+      padding-right: 8px;
     }
 
     .label-title {
@@ -181,11 +182,24 @@
   <div class="section">
     <div class="row">
       <div class="label-group">
-        <span class="label-title">Rainbow Mode 🌈</span>
-        <span class="label-desc">Animated gradient headings (h1-h6)</span>
+        <span class="label-title">Rainbow Headings 🌈</span>
+        <span class="label-desc">Animated gradient (h1–h6)</span>
       </div>
       <label class="switch">
         <input type="checkbox" id="rainbow-toggle">
+        <span class="slider rainbow"></span>
+      </label>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="row">
+      <div class="label-group">
+        <span class="label-title">Rainbow Images 🎨</span>
+        <span class="label-desc">Rotating hues with staggered offsets</span>
+      </div>
+      <label class="switch">
+        <input type="checkbox" id="rainbow-images-toggle">
         <span class="slider rainbow"></span>
       </label>
     </div>
